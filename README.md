@@ -1,4 +1,5 @@
 ### User Stories
+
 ```
 As a User
 So that I can keep track of my bookmarks
@@ -11,7 +12,20 @@ So that I can record a bookmark for later use
 I want to be able to add a bookmark to my list of bookmarks
 ```
 
+```
+As a user
+So that I can remove a bookmark I no longer want
+I want to be able to delete a bookmark from my list of bookmarks
+```
+
+```
+As a user
+So that I can change information stored in the bookmark
+I'd like to be able to update a bookmark
+```
+
 ### Domain Model
+
 User Story 1 Diagram:
 
 ![US1 Domain Diagram](https://github.com/chriswhitehouse/bookmark_manager/blob/main/diagrams/user_story_1_diagram.svg)
@@ -20,26 +34,26 @@ User Story 2 Diagram:
 
 ![US2 Domain Diagram](https://github.com/chriswhitehouse/bookmark_manager/blob/main/diagrams/user_story_2_diagram.svg)
 
-* Objects: user, bookmark, bookmark(list)
+- Objects: user, bookmark, bookmark(list)
 
-* Properties: name, url,
+- Properties: name, url,
 
-* Methods: see_list
+- Methods: see_list
 
-|Class |User|
-|-----|-----|
-|Properties| name |
-|Actions | see_name |
+| Class      | User     |
+| ---------- | -------- |
+| Properties | name     |
+| Actions    | see_name |
 
-|Class | Bookmark |
-|---|---|
-|Properties | url, short_name, description |
-|Actions|    |
+| Class      | Bookmark                     |
+| ---------- | ---------------------------- |
+| Properties | url, short_name, description |
+| Actions    |                              |
 
-|Class | BookmarkManager |
-|-----|------|
-|Properties | bookmarks.db |
-|Actions | see_list, create_bookmark |
+| Class      | BookmarkManager           |
+| ---------- | ------------------------- |
+| Properties | bookmarks.db              |
+| Actions    | see_list, create_bookmark |
 
 ### Database Setup
 

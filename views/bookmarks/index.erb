@@ -7,9 +7,17 @@
 <%# <div class="center"><h1>Add Your Bookmark!</h1> %>
 <ul>
   <% @bookmarks.each do |bookmark| %>
-    <li>
-      <a href="<%= bookmark.url %>">
+    <li class="bookmark" id="bookmark-<%=bookmark.id%>">
+      <a href="<%= bookmark.url %>" target="_blank">
         <%= bookmark.title %>
+      <form action="bookmarks/<%=bookmark.id%>" method="post">
+      <input type='hidden' name='_method' value='DELETE'/>
+      <input type="submit" value="Delete"/>
+      </form>
+      <form action="bookmarks/update/<%=bookmark.id%>" method="get">
+      <input type='hidden' name='_method' value='UPDATE'/>
+      <input type="submit" value="Update"/>
+      </form>
       </a>
     </li>
   <% end %>

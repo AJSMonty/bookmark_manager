@@ -5,9 +5,9 @@ describe Bookmark do
   describe '.all' do
     it "returns a list of all saved bookmarks" do
       #Add the test data
-      bookmark = Bookmark.create('Makers Academy', 'http://www.makersacademy.com')
-      Bookmark.create('DAS', 'http://www.destroyallsoftware.com')
-      Bookmark.create('Google', 'http://www.google.com')
+      bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+      Bookmark.create(title: 'DAS', url: 'http://www.destroyallsoftware.com')
+      Bookmark.create(title: 'Google', url: 'http://www.google.com')
 
       bookmarks = Bookmark.all
 
@@ -22,7 +22,7 @@ describe Bookmark do
 
   describe '.create' do
     it 'should add a bookmark to list of saved bookmarks' do
-      bookmark = Bookmark.create('Test Bookmark', 'http://www.testbookmark.com')
+      bookmark = Bookmark.create(title: 'Test Bookmark', url: 'http://www.testbookmark.com')
       persisted_data = persisted_data(id: bookmark.id)
 
       expect(bookmark).to be_a Bookmark
@@ -34,10 +34,31 @@ describe Bookmark do
 
   describe '.delete' do
     it 'should delete a bookmark from list of bookmarks' do
-      bookmark = Bookmark.create('Test Bookmark', 'http://www.testbookmark.com')
+      bookmark = Bookmark.create(title: 'Test Bookmark', url: 'http://www.testbookmark.com')
       persisted_data = persisted_data(id: bookmark.id)
-      Bookmark.delete(bookmark.title)
-      expect(Bookmark.all).not_to include('Test Bookmark')
+      Bookmark.delete(id: bookmark.id)
+      expect(Bookmark.all.length).to eq 0
+    end
+  end
+
+  describe '.update' do
+    it 'should update a bookmark from list of bookmarks' do
+      bookmark = Bookmark.create(title: 'Test Bookmark', url: 'http://www.testbookmark.com')
+      Bookmark.update(id: 1, new_title: 'Sport', new_url: 'http://www.blah.com')
+      expect(Bookmark.all.first.title).to include('Sport')
+    end
+  end
+
+  describe '.find' do
+    it 'returns the requested bookmark object' do
+      bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+
+      result = Bookmark.find(id: bookmark.id)
+
+      expect(result).to be_a Bookmark
+      expect(result.id).to eq bookmark.id
+      expect(result.title).to eq 'Makers Academy'
+      expect(result.url).to eq 'http://www.makersacademy.com'
     end
   end
 

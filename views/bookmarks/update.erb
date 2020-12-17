@@ -1,0 +1,8 @@
+<h1>Update Your Bookmark!</h1>
+<form action='/bookmarks/update' method='post'>
+  Enter your url and title:
+  <input type='text' name='new_title' value="<%=@bookmark.title%>">
+  <input type='text' name='new_url' value="<%=@bookmark.url%>">
+  <input type='hidden' name='id' value='<%=params[:id]%>'>
+  <input type='submit'  value='Update'>
+</form>
