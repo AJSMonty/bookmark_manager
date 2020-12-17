@@ -10,8 +10,13 @@ class BookmarkManager < Sinatra::Base
     erb :'bookmarks/index'
   end
 
-  post '/bookmarks' do
+  post '/bookmarks/add' do
     Bookmark.create(params[:title], params[:url])
+    redirect '/bookmarks'
+  end
+
+  post '/bookmarks/delete' do
+    Bookmark.delete(params[:title])
     redirect '/bookmarks'
   end
 
@@ -19,6 +24,9 @@ class BookmarkManager < Sinatra::Base
     erb :'bookmarks/new'
   end
 
+  get '/bookmarks/delete' do
+    erb :'bookmarks/delete'
+  end
 
 
   # start the server if ruby file executed directly

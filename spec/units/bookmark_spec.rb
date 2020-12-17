@@ -32,4 +32,13 @@ describe Bookmark do
     end
   end
 
+  describe '.delete' do
+    it 'should delete a bookmark from list of bookmarks' do
+      bookmark = Bookmark.create('Test Bookmark', 'http://www.testbookmark.com')
+      persisted_data = persisted_data(id: bookmark.id)
+      Bookmark.delete(bookmark.title)
+      expect(Bookmark.all).not_to include('Test Bookmark')
+    end
+  end
+
 end

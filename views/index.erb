@@ -1,4 +1,20 @@
+<%# <!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="center"> %>
 <h1>Welcome to Bookmark Manager</h1>
 <form action='/bookmarks/new' method='get'>
   <input type='submit' value='Add'>
 </form>
+<form action='/bookmarks/delete' method='get'>
+  <input type='submit' value='Delete'>
+</form>
+<form action='/bookmarks' method='get'>
+  <input type='submit' value='View Bookmarks'>
+</form>
+<%# </div>
+</body>
+</html> %>
